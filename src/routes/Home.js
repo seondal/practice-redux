@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ToDo from "../components/ToDo";
 import { addToDo } from "../store";
 
 function Home() {
-  const todo = useSelector((state) => state);
+  const todos = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [text, setText] = useState("");
@@ -25,7 +26,11 @@ function Home() {
         <input type="text" value={text} onChange={onChange} />
         <button>Add</button>
       </form>
-      <ul></ul>
+      <ul>
+        {todos.map((todo) => (
+          <ToDo {...todo} key={todo.id} />
+        ))}
+      </ul>
     </>
   );
 }
