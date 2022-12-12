@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Home() {
+  const todo = useSelector((state) => state);
+
   const [text, setText] = useState("");
 
   function onChange(e) {
